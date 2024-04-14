@@ -25,21 +25,21 @@ async function executeSELECTQuery(query) {
         });
     });
   }
-  console.log(data);
+
   const filteredData =
     whereClauses.length > 0
       ? data.filter((row) =>
           whereClauses.every((clause) => evaluateCondition(row, clause))
         )
       : data;
-  filteredData.map((row) => {
+    return filteredData.map((row) => {
     const selectedRow = {};
-    return fields.forEach(field => {
+    fields.forEach(field => {
       selectedRow[field] = row[field];
+    })
       return selectedRow;
-  })});
+  });
 
-  return filteredData;
 }
 
 function evaluateCondition(row, clause) {

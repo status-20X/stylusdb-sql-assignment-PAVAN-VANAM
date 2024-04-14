@@ -3,7 +3,7 @@ const readCSV = require('../csvReader');
 
 async function executeSELECTQuery(query) {
     const { fields, table, whereClauses } = parseQuery(query);
-    const data = await readCSV(`${table}.csv`);
+    const data = await readCSV(`${table}.csv`,fields);
 
     // Apply WHERE clause filtering
     const filteredData = whereClauses.length > 0

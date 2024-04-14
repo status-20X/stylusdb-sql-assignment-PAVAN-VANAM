@@ -22,16 +22,15 @@ test('Parse SQL Query', () => {
     });
 });
 
-/* test('Execute SQL Query', async () => {
+test('Execute SQL Query', async () => {
     const query = 'SELECT id, name FROM student';
     const result = await executeSELECTQuery(query);
-    console.log(result);
     expect(result.length).toBeGreaterThan(0);
     expect(result[0]).toHaveProperty('id');
     expect(result[0]).toHaveProperty('name');
     expect(result[0]).not.toHaveProperty('age');
     expect(result[0]).toEqual({ id: '1', name: 'John' });
-}); */
+});
 
 test('Parse SQL Query with WHERE Clause', () => {
     const query = 'SELECT id, name FROM student WHERE age = 25';
@@ -79,7 +78,7 @@ test('Parse SQL Query with Multiple WHERE Clauses', () => {
 });
 
 test('Execute SQL Query with Complex WHERE Clause', async () => {
-    const query = 'SELECT id, name FROM student WHERE age = 30 AND name = John';
+    const query = 'SELECT id, name, age FROM student WHERE age = 30 AND name = John';
     const result = await executeSELECTQuery(query);
     expect(result.length).toBe(1);
     expect(result[0]).toEqual({ "age":"30" ,id: '1', name: 'John' });
